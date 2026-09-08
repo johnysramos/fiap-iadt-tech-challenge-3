@@ -6,6 +6,27 @@ Tech Challenge Fase 3 · 9IADT.
 
 ---
 
+## Tecnologias
+
+| Tecnologia | Versão | Papel no projeto |
+|---|---|---|
+| Python | 3.14 | Linguagem do projeto |
+| LangGraph | 1.2 | Orquestra o fluxo do assistente: os 4 nós, o laço ReAct e as arestas condicionais |
+| LangChain Core | 1.6 | Define as ferramentas (`@tool`) e o formato das mensagens |
+| LangChain OpenAI | 1.6 | Integração com os modelos da OpenAI |
+| OpenAI `gpt-4.1-mini` | | Raciocínio e redação da resposta |
+| OpenAI `gpt-4.1-nano` | | Guardrail de prescrição direta |
+| OpenAI `text-embedding-3-small` | | Vetores de 1536 dimensões dos protocolos |
+| PostgreSQL | 16 | Prontuários, protocolos e auditoria |
+| pgvector | 0.8 | Coluna `vector(1536)`, busca por distância de cosseno e índice HNSW |
+| SQLAlchemy | 2.0 | Engine e consultas parametrizadas |
+| psycopg | 3.3 | Driver do PostgreSQL |
+| Docker Compose | | Sobe o banco já populado, pelo `docker-entrypoint-initdb.d` |
+| Rich | 15.0 | Formatação da conversa no terminal |
+| Pydantic | 2.x | Tipagem dos argumentos das ferramentas e da saída do guardrail |
+
+---
+
 ## Rodando
 
 Precisa de Docker, Python 3.11+ e uma chave da OpenAI.
@@ -18,11 +39,11 @@ python main.py setup       # carrega o banco e calcula os embeddings (uma vez)
 python main.py             # conversa com o assistente
 ```
 
-Dentro da conversa: `/paciente P-0002` troca o paciente em foco, `sair` encerra.
-
 ---
 
 ## O que ele faz
+
+Dentro da conversa: `/paciente P-0002` troca o paciente em foco, `sair` encerra.
 
 **Lista dados do paciente**: nome, idade, doenças, alergias, medicamentos em uso, exames com valor e faixa de referência, e as consultas marcadas.
 
