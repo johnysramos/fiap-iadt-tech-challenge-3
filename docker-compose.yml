@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: anamnese-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: anamnese
+      POSTGRES_USER: anamnese
+      POSTGRES_PASSWORD: anamnese
+      POSTGRES_INITDB_ARGS: "--locale=C.UTF-8 --encoding=UTF8"
+    ports:
+      - "55432:5432"
+    volumes:
+      - anamnese-pgdata:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U anamnese -d anamnese"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  anamnese-pgdata:
