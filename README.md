@@ -3,6 +3,7 @@
 Assistente que responde perguntas de médicos usando os **dados do próprio hospital**: consulta o prontuário do paciente, sugere tratamentos com base nos protocolos internos e marca consultas na agenda, sempre carimbando a resposta como sugestão que precisa ser revisada por um médico.
 
 Tech Challenge Fase 3 · 9IADT.
+Vídeo de apresentaçãop do projeto: https://youtu.be/bJr4Yiab8lo
 
 ---
 
